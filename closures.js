@@ -65,3 +65,24 @@ function createStepCounter(start, step){
 const counterByFive = createStepCounter(10, 5);
 console.log(counterByFive());
 console.log(counterByFive());
+
+
+function createPriceFilter(maxPrice){
+    return function(product){
+        return product.price <= maxPrice;
+    }
+}
+
+const products = [
+  { name: "Мышь", price: 1200 },
+  { name: "Коврик", price: 700 },
+  { name: "Монитор", price: 15000 }
+];
+
+const isAffordable = createPriceFilter(1000);
+const isAffordable1500 = createPriceFilter(1500);
+const selected = products.filter(isAffordable);
+const selected1500 = products.filter(isAffordable1500);
+
+console.log(selected); 
+console.log(selected1500);
